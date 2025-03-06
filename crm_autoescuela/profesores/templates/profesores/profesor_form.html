@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends "crm_autoescuela/base.html" %}
+
+{% block title %}Crear Profesor{% endblock %}
+
+{% block content %}
+<h1>Crear Profesor</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'profesores_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

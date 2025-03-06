@@ -1,0 +1,47 @@
+{% extends 'crm_autoescuela/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <span class="user-greeting">
+                <i class="fas fa-user me-2"></i>Bienvenido, <strong>{{ request.user.username }}</strong>
+            </span>
+        </div>
+        <div>
+            <a href="{% url 'logout' %}" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt me-1"></i>Cerrar Sesión
+            </a>
+        </div>
+    </div>
+    <div class="header-divider">
+        <hr class="my-4">
+    </div>
+    <h1 class="text-center">CRM Autoescuela</h1>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Profesores</h2>
+                    <p class="card-text">Gestiona los profesores de la autoescuela.</p>
+                    <a href="{% url 'profesores_list' %}" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Alumnos</h2>
+                    <p class="card-text">Gestiona los alumnos de la autoescuela.</p>
+                    <a href="{% url 'alumnos_list' %}" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

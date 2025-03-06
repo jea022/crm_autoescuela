@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM Autoescuela - Profesores</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <button id="create-profesor" class="btn btn-primary">Crear Profesor</button>
+        <table id="profesores-list">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido 1</th>
+                    <th>Apellido 2</th>
+                    <th>Email</th>
+                    <th>Dirección Postal</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="profesores"></tbody>
+        </table>
+    </div>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="js/models/profesor.js"></script>
+    <script src="js/views/profesorView.js"></script>
+    <script src="js/views/profesoresView.js"></script>
+    <script src="js/app_profesores.js"></script>
+
+    <script type="text/template" id="profesor-template">
+        <td><%= id %></td>
+        <td><%= nombre %></td>
+        <td><%= apellido1 %></td>
+        <td><%= apellido2 %></td>
+        <td><%= email %></td>
+        <td><%= direccionPostal %></td>
+        <td><%= telefono %></td>
+        <td>
+            <button class="btn-edit btn btn-warning">Editar</button>
+            <button class="delete-profesor btn btn-danger">Eliminar</button>
+        </td>
+    </script>
+</body>
+</html>

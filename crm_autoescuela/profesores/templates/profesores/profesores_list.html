@@ -1,0 +1,80 @@
+{% extends "crm_autoescuela/base.html" %}
+{% load static %}
+{% block title %}Listado de Profesores{% endblock %}
+
+{% block content %}
+<div id="profesores-container">
+    <div id="focus-trap" tabindex="-1" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"></div>
+    <br>
+    {% include 'crm_autoescuela/_back_button.html' %}
+    <h1>Listado de Profesores</h1>
+    <br>
+    {% include "profesores/profesores_filter.html" %}
+    <button id="create-profesor" class="btn btn-primary">Crear Nuevo Profesor</button>
+    <br>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido 1</th>
+                <th>Apellido 2</th>
+                <th>Email</th>
+                <th>Dirección Postal</th>
+                <th>Teléfono</th>
+                <th>Alumnos Asignados</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="profesores-list">
+        </tbody>
+    </table>
+</div>
+
+{% include "profesores/modals/crear_profesor_modal.html" %}
+{% include "profesores/modals/editar_profesor_modal.html" %}
+{% include "profesores/modals/eliminar_profesor_modal.html" %}
+
+<script type="text/template" id="profesor-template">
+    <td><%= id %></td>
+    <td><%= nombre %></td>
+    <td><%= apellido1 %></td>
+    <td><%= apellido2 %></td>
+    <td><%= email %></td>
+    <td><%= direccionPostal %></td>
+    <td><%= telefono %></td>
+    <td>
+        <% if (alumnos && alumnos.length > 0) { %>
+            <ul class="list-unstyled">
+                <% _.each(alumnos, function(alumno) { %>
+                    <li><%= alumno.nombre %> <%= alumno.apellido1 %></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <span class="text-muted">Sin alumnos asignados</span>
+        <% } %>
+    </td>
+    <td class="action-buttons">
+        <button type="button" class="btn-edit btn btn-warning">
+            <i class="fas fa-edit"></i> Editar
+        </button>
+        <button type="button" class="delete-profesor btn btn-danger">
+            <i class="fas fa-trash-alt"></i> Eliminar
+        </button>
+    </td>
+</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'profesores/js/libs/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'profesores/js/libs/underscore-min.js' %}"></script>
+    <script src="{% static 'profesores/js/libs/backbone-min.js' %}"></script>
+    <script src="{% static 'profesores/js/views/profesorView.js' %}"></script>
+    <script src="{% static 'profesores/js/views/filtroView.js' %}"></script>
+    <script src="{% static 'profesores/js/views/profesoresView.js' %}"></script>
+    <script src="{% static 'profesores/js/modals/CreateProfesorModal.js' %}"></script>
+    <script src="{% static 'profesores/js/modals/EditProfesorModal.js' %}"></script>
+    <script src="{% static 'profesores/js/modals/DeleteProfesorModal.js' %}"></script>
+    <script src="{% static 'profesores/js/app.js' %}"></script>
+{% endblock %}

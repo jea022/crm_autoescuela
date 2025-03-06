@@ -1,0 +1,35 @@
+{% extends 'crm_autoescuela/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <a href="{% url 'logout' %}" class="btn btn-secondary">Cerrar Sesión</a>
+    <h1 class="text-center">CRM Autoescuela</h1>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Profesores</h2>
+                    <p class="card-text">Gestiona los profesores de la autoescuela.</p>
+                    <a href="{% url 'profesores_list' %}" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Alumnos</h2>
+                    <p class="card-text">Gestiona los alumnos de la autoescuela.</p>
+                    <a href="{% url 'alumnos_list' %}" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
