@@ -65,7 +65,6 @@ var ProfesoresView = Backbone.View.extend({
             const direccion = $row.find('td:eq(5)').text().toLowerCase();
             const telefono = $row.find('td:eq(6)').text().toLowerCase();
             
-            // Obtener el texto de la celda de alumnos (índice 7)
             const alumnosCell = $row.find('td:eq(7)').text().toLowerCase();
             
             const matches = 
