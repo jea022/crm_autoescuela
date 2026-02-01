@@ -3,12 +3,15 @@ services:
     name: crm-autoescuela
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt && python crm_autoescuela/manage.py migrate && python crm_autoescuela/manage.py collectstatic --no-input
-    startCommand: gunicorn crm_autoescuela.wsgi:application
+    rootDir: .
+    buildCommand: ./build.sh
+    startCommand: cd crm_autoescuela && gunicorn crm_autoescuela.wsgi:application
     envVars:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        scope: runtime
+        value: ".onrender.com"
       - key: SECRET_KEY
-        scope: runtime
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: "3.11.4"
