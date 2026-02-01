@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: crm-autoescuela
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python crm_autoescuela/manage.py migrate && python crm_autoescuela/manage.py collectstatic --no-input
+    startCommand: gunicorn crm_autoescuela.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        scope: runtime
+      - key: SECRET_KEY
+        scope: runtime
