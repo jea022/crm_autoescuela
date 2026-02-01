@@ -3,9 +3,13 @@ services:
     name: crm-autoescuela
     env: python
     plan: free
-    rootDir: .
-    buildCommand: ./build.sh
-    startCommand: cd crm_autoescuela && gunicorn crm_autoescuela.wsgi:application
+    rootDir: crm_autoescuela
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r ../requirements.txt
+      python manage.py migrate
+      python manage.py collectstatic --no-input
+    startCommand: gunicorn crm_autoescuela.wsgi:application
     envVars:
       - key: DEBUG
         value: "False"
